@@ -13,7 +13,7 @@ public class ClientListener implements ServletContextListener {
 
 	@Override
 	public void contextInitialized(ServletContextEvent arg0) {
-		System.out.println("程序开始启动");
+		System.out.println("程序开始启动了");
 		Server server = new Server();
 		server.startServer();
 		
