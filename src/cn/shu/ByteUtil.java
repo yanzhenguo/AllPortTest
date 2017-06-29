@@ -1,5 +1,7 @@
 package cn.shu;
 
+import cn.shu.entity.Message;
+
 public class ByteUtil {
 	public static String bytesToHexString(byte[] src){
 		StringBuilder stringBuilder = new StringBuilder("");
@@ -13,6 +15,13 @@ public class ByteUtil {
 			}
 		return stringBuilder.toString();
 		}
-	
+	public static Message contentChange(byte[] src){
+		Message message=new Message("1","2","4","5");
+		System.out.println(message.getId());
+		System.out.println(message.getTime());
+		System.out.println(message.getEnergy());
+		System.out.println(message.getPower());
+		return message;
+	}
 	}
 	
