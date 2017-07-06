@@ -30,15 +30,14 @@ public class ByteUtil {
 		String temp = srcString.substring(0,8);
 		String baseData="ffffe770";
 		if(baseData.equals(temp)){
-			String id = srcString.substring(20,28);
-			String data = DataSaver.sd.format(new Date());
+			String id = srcString.substring(20,28);			
 			String energy = jisuan(srcString.substring(52,60),4.0);//00002a75
 			String power = jisuan(srcString.substring(48,52),1024.0);//04ea
-			Message message=new Message(id,data,energy,power);
-			System.out.println(message.getId());
-			System.out.println(message.getTime());
-			System.out.println(message.getEnergy());
-			System.out.println(message.getPower());
+			Message message=new Message(id,new Date(),energy,power);
+//			System.out.println(message.getId());
+//			System.out.println(message.getTime());
+//			System.out.println(message.getEnergy());
+//			System.out.println(message.getPower());
 			return message;
 		}else{
 			return null;

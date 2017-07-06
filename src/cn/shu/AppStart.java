@@ -8,9 +8,7 @@ public class AppStart {
 		System.out.println("程序开始启动");
 		MainWindow mainWindow=new MainWindow();
 		Server server = new Server();
-		server.startServer();
-		Server2 server2 = new Server2();
-		server2.startServer();
+		server.startServer();		
 		DataSaver.mainWindow=mainWindow;
 	}
 

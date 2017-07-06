@@ -8,10 +8,23 @@
 </head>
 <body>
 <div>
-	hello world!
+	<table id="message">
+	</table>
 </div>
  <script type="text/javascript">
- 	
+ 	setInterval(function(){
+ 		$.get("GetRecent",function(result,status){
+ 			if (result=="null") return;
+ 			var obj = JSON.parse(result);
+ 			
+ 			for (var i=0;i<obj.content.length;i++){
+ 				$("#message").append("<li>"+obj.content[i].message+"</li>");
+ 			}
+ 			//$.each(result.content,function(index,content){
+ 			//	$("#message").append("<li>"+content+"</li>");
+ 			//});
+ 		});
+ 	},500);
  </script>
 </body>
 </html>
