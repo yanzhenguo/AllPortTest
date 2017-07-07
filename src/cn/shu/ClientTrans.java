@@ -30,11 +30,14 @@ public class ClientTrans  implements Runnable{
 		Date lastTime = new Date();
 		while(true){
 			try{
+				if(clientSocket.isClosed()){					
+					break;
+				}
 				InputStream inputStream = clientSocket.getInputStream();
 				if(inputStream.available()==0) {
 					if(new Date().getTime()-lastTime.getTime()>300000){
 						DataSaver.sockketPool.remove(String.valueOf(clientSocket.hashCode()));
-						DataSaver.mainWindow.tf.append(clientSocket.getRemoteSocketAddress()+"断开了连接");
+						DataSaver.mainWindow.tf.append(clientSocket.getRemoteSocketAddress()+"断开了连接\n");
 						break;
 					}
 					Thread.sleep(100);

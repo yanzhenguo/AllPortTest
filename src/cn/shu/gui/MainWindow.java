@@ -2,12 +2,11 @@ package cn.shu.gui;
 
 import javax.swing.*;
 
+import java.awt.Color;
+import java.awt.FlowLayout;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
+import java.awt.GridLayout;
+import java.awt.event.*;
 import java.io.IOException;
 import java.net.Socket;
 
@@ -16,13 +15,23 @@ import cn.shu.Server;
 import cn.shu.entity.ClientPool;
 
 public class MainWindow {
-	private JFrame frame = new JFrame("监控");
-	public JTextArea tf = new JTextArea();
-	public JButton button1 =new JButton("清除日志");
+	private JFrame frame;
+	public JTextArea tf;
+	public JButton button1;
+	public JPanel panel;
+	public JScrollPane jscro;
+	
 	
 	public MainWindow(){
-		//this.setSize(800, 800);
+		frame = new JFrame("监控");
+		tf = new JTextArea(30,76);
+		tf.setFont(new Font("Serif",Font.PLAIN, 16));
+		button1 =new JButton("清除日志");
+		panel = new JPanel();
+		jscro = new JScrollPane(tf);
+		
 		frame.addWindowListener(new WindowAdapter(){
+			
 			@Override
 			public void windowClosing(WindowEvent e) {
 				//释放所有连接
@@ -49,15 +58,21 @@ public class MainWindow {
 				tf.setText("");
 				
 			}});
+		frame.setLayout(new GridLayout(2,1));
+			
+		
+		panel.add(jscro);
+		panel.setLayout(new FlowLayout());
 		frame.setLayout(null);
 		button1.setSize(100, 30);
 		button1.setLocation(10, 10);
-		button1.setFont(new Font("",Font.PLAIN, 15));
-		tf.setSize(850, 500);
-		tf.setLocation(10, 50);
+		button1.setFont(new Font("Serif",Font.PLAIN, 15));
+		
+		panel.setLocation(10,50);
+		panel.setSize(860,680);
 		frame.setSize(900,800);
 		frame.add(button1);
-		frame.add(tf);		
+		frame.add(panel);
 		frame.setVisible(true);
 	}
 	public static void main(String[] args) {

@@ -13,7 +13,7 @@ public class ClientPool {
 	private String id;
 	private StringBuilder stringBuilder = new StringBuilder();
 	
-	public void add(String message, String id){
+	public void add(String message){
 		stringBuilder.append(message+"\r\n");
 		if(stringBuilder.length()>10000){
 			saveToFile(stringBuilder.toString(),id);

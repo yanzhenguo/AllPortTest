@@ -30,11 +30,11 @@ public class ServerResponse {
 		if(DataSaver.clientmap.get(message.getId())==null){
 			ClientPool clientPool = new ClientPool();
 			clientPool.setId(message.getId());
-			clientPool.add(hexString, message.getId());
-			DataSaver.clientmap.put(message.getId(),new ClientPool());
+			clientPool.add(hexString);
+			DataSaver.clientmap.put(message.getId(),clientPool);
 		}else{
 			ClientPool clientPool = DataSaver.clientmap.get(message.getId());
-			clientPool.add(hexString, message.getId());
+			clientPool.add(hexString);
 		}
 		
 		//保存到内存中，以供查询
