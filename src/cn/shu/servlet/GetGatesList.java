@@ -25,7 +25,7 @@ public class GetGatesList extends HttpServlet{
 		StringBuilder sb = new StringBuilder("");
 		sb.append("{'content':[");
 		for(String key : keys){
-			sb.append("'key':'"+key+"',");
+			sb.append("{'key':'"+key+"'},");
 		}
 		sb.delete(sb.length()-1, sb.length());		
 		sb.append("]}");

@@ -22,8 +22,10 @@ public class ClientPool {
 	}
 	public void saveToFile(String s, String id){
 		String filename=DataSaver.sd2.format(new Date())+".txt";
-		String path = this.getClass().getClassLoader().getResource("data").getPath();		
-		File file = new File(path+"/"+id+"/"+filename);
+		String path = this.getClass().getClassLoader().getResource("").getPath();
+		File dataFile = new File(path+"/data");
+		if(!dataFile.isDirectory()) dataFile.mkdirs();
+		File file = new File(path+"/data/"+id+"/"+filename);
 		if(!file.getParentFile().exists()) {file.getParentFile().mkdirs();}
 		try{
 			if(!file.exists()) file.createNewFile();
